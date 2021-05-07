@@ -133,14 +133,8 @@ components:
   schemas:
     Game:
       required:
+        - id
         - name
-        - genre
-        - photoUrls
-        - publisher
-        - releaseDate
-        - platform
-        - rating
-        - price
       type: object
       properties:
         id:
@@ -161,7 +155,7 @@ components:
         releaseDate:
           type: string
           example: March 1, 2020
-        platform:
+        platforms:
           type: array
           items:
             type: string
