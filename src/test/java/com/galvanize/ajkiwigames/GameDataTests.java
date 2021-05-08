@@ -21,21 +21,44 @@ public class GameDataTests {
     }
 
     @Test
-    void settersAndGetters() {
+    void genreSetterGetter() {
         game.setGenre("Retro");
-        game.setPhotoUrls(new String[]{"imgur.com/tetris"});
-        game.setPublisher("Ubisoft");
-        game.setReleaseDate("March 20, 2021");
-        game.setPlatforms(new String[]{"Windows", "MacOS"});
-        game.setRating("E");
-        game.setPrice(19.99);
-
         assertEquals("Retro", game.getGenre(), "Should return Retro");
+    }
+
+    @Test
+    void photoUrlsSetterGetter() {
+        game.setPhotoUrls(new String[]{"imgur.com/tetris"});
         assertArrayEquals(new String[]{"imgur.com/tetris"}, game.getPhotoUrls(), "Should return array of urls");
+    }
+
+    @Test
+    void publisherSetterGetter() {
+        game.setPublisher("Ubisoft");
         assertEquals("Ubisoft", game.getPublisher(), "Should return Ubisoft");
+    }
+
+    @Test
+    void releaseDateSetterGetter() {
+        game.setReleaseDate("March 20, 2021");
         assertEquals("March 20, 2021", game.getReleaseDate(), "Should return March 20, 2021");
+    }
+
+    @Test
+    void platformSetterGetter() {
+        game.setPlatforms(new String[]{"Windows", "MacOS"});
         assertArrayEquals(new String[]{"Windows", "MacOS"}, game.getPlatforms(), "Should return platforms \"Windows\", \"MacOS\"");
+    }
+
+    @Test
+    void ratingSetterGetter() {
+        game.setRating("E");
         assertEquals("E", game.getRating(), "Should return rating E");
+    }
+
+    @Test
+    void priceSetterGetter() {
+        game.setPrice(19.99);
         assertEquals(19.99, game.getPrice(), "Should return price 19.99");
     }
 
