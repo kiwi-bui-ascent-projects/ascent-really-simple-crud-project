@@ -21,6 +21,18 @@ public class GameDataTests {
     }
 
     @Test
+    void idSetterGetter() {
+        game.setId(17);
+        assertEquals(17, game.getId(), "Should return 17");
+    }
+
+    @Test
+    void nameSetterGetter() {
+        game.setName("Mario");
+        assertEquals("Mario", game.getName(), "Should return Mario");
+    }
+
+    @Test
     void genreSetterGetter() {
         game.setGenre("Retro");
         assertEquals("Retro", game.getGenre(), "Should return Retro");
