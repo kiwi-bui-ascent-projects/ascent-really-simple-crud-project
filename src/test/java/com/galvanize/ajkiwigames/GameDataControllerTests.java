@@ -1,6 +1,5 @@
 package com.galvanize.ajkiwigames;
 
-import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -60,13 +60,8 @@ public class GameDataControllerTests {
 
     @Test
     void updateGameById() throws Exception {
-        JSONObject argsJson = new JSONObject()
-                .put("id", 3)
-                .put("field", "publisher")
-                .put("value", "EA");
-
-        String argsStr = argsJson.toString();
-        mockMvc.perform(put("/game/3").contentType(MediaType.APPLICATION_JSON).content(argsStr))
+        String arguments = "{\"field\":\"publisher\",\"value\":\"EA\"}";
+        mockMvc.perform(put("/game/3").contentType(MediaType.APPLICATION_JSON).content(arguments))
                 .andDo(print())
                 .andExpect(status().isOk());
 
@@ -74,19 +69,24 @@ public class GameDataControllerTests {
     }
 
     @Test
-    void addGames() throws Exception {
-        GameData newGame = new GameData(11, "Donkey Kong");
-        gameDataList.add(newGame);
-        when(gameDataService.addGame(newGame)).thenReturn(gameDataList.get(10));
-        JSONObject argsJson = new JSONObject()
-                .put("id", 11)
-                .put("name", "Donkey Kong");
+    void addGame() throws Exception {
+        when(gameDataService.addGame(any(gameDataList.get(1).getClass())))
+                .thenReturn(new GameData(11, "Donkey Kong"));
 
-        String argsStr = argsJson.toString();
-        mockMvc.perform(post("/game/add").contentType(MediaType.APPLICATION_JSON).content(argsStr))
+        String arguments = "{\"id\":11,\"name\":\"Donkey Kong\"}";
+        mockMvc.perform(post("/game").contentType(MediaType.APPLICATION_JSON).content(arguments))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("name").value("Donkey Kong"));
+    }
+
+    @Test
+    void deleteGame() throws Exception {
+        mockMvc.perform(delete("/game/3"))
+                .andDo(print())
+                .andExpect(status().isOk());
+
+        verify(gameDataService).deleteGameById(3);
     }
 }
 

@@ -13,12 +13,6 @@ public class GameDataService {
         gameDataList = new ArrayList<>();
     }
 
-    public GameData addGame(GameData game) {
-        this.gameDataList.add(game);
-        System.out.println("THIS WAS RAN");
-        return game;
-    }
-
     public List<GameData> getGames() {
         return this.gameDataList;
     }
@@ -59,6 +53,11 @@ public class GameDataService {
                 getGameById(id).setPrice((double) value);
                 break;
         }
+    }
+
+    public GameData addGame(GameData game) {
+        this.gameDataList.add(game);
+        return game;
     }
 
     public void deleteGameById(int id) {

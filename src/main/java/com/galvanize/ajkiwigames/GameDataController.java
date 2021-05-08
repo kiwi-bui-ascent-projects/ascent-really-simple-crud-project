@@ -27,39 +27,32 @@ public class GameDataController {
     }
 
     @PutMapping("/{id}")
-    public void updateById(@RequestBody String arguments) {
-        ObjectMapper mapper = new ObjectMapper();
-
+    public void updateById(@PathVariable int id, @RequestBody String arguments) {
         try {
+            ObjectMapper mapper = new ObjectMapper();
             Map map = mapper.readValue(arguments, Map.class);
 
-            int id = (int) map.get("id");
-            String field = (String) map.get("field");
-            Object value = map.get("value");
-
-            this.gameDataService.updateGameById(id, field, value);
+            this.gameDataService.updateGameById(id, (String) map.get("field"), map.get("value"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public GameData addGame(@RequestBody String arguments) {
-        ObjectMapper mapper = new ObjectMapper();
-
         try {
+            ObjectMapper mapper = new ObjectMapper();
             Map map = mapper.readValue(arguments, Map.class);
 
-            int id = (int) map.get("id");
-            String name = (String) map.get("name");
-
-            GameData game = new GameData(id, name);
-
-            return this.gameDataService.addGame(game);
+            return this.gameDataService.addGame(new GameData((int) map.get("id"), (String) map.get("name")));
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
+    }
 
+    @DeleteMapping("/{id}")
+    public void deleteGame(@PathVariable int id) {
+        this.gameDataService.deleteGameById(id);
     }
 }
