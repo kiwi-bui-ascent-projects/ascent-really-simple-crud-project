@@ -11,6 +11,9 @@ public class GameData {
     private String rating;
     private double price;
 
+    public GameData() {
+    }
+
     public GameData(int id, String name) {
         this.name = name;
         this.id = id;
@@ -21,7 +24,6 @@ public class GameData {
         this.platforms = new String[0];
         this.rating = "";
         this.price = 0.00;
-
     }
 
     public GameData(int id, String name, String genre, String[] photoUrls, String publisher, String releaseDate, String[] platforms, String rating, double price) {
@@ -36,12 +38,20 @@ public class GameData {
         this.price = price;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return this.name;
     }
 
-    public int getId() {
-        return id;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getGenre() {
