@@ -11,8 +11,7 @@ public class GameData {
     private String rating;
     private double price;
 
-    public GameData() {
-    }
+    public GameData() { }
 
     public GameData(int id, String name) {
         this.name = name;
