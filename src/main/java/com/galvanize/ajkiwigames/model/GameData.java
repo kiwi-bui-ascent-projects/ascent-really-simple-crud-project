@@ -1,4 +1,4 @@
-package com.galvanize.ajkiwigames;
+package com.galvanize.ajkiwigames.model;
 
 public class GameData {
     private int id;
@@ -11,8 +11,7 @@ public class GameData {
     private String rating;
     private double price;
 
-    public GameData() {
-    }
+    public GameData() { }
 
     public GameData(int id, String name) {
         this.name = name;

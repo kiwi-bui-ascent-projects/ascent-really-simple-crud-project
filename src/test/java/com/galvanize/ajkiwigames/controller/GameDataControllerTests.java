@@ -1,5 +1,7 @@
-package com.galvanize.ajkiwigames;
+package com.galvanize.ajkiwigames.controller;
 
+import com.galvanize.ajkiwigames.model.GameData;
+import com.galvanize.ajkiwigames.service.GameDataService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
