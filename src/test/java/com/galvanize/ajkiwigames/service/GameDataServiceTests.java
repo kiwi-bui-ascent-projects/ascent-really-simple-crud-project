@@ -1,7 +1,6 @@
 package com.galvanize.ajkiwigames.service;
 
 import com.galvanize.ajkiwigames.model.GameData;
-import com.galvanize.ajkiwigames.service.GameDataService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
