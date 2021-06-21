@@ -1,4 +1,4 @@
-package com.galvanize.ajkiwigames;
+package com.galvanize.ajkiwigames.model;
 
 public class GameData {
     private int id;

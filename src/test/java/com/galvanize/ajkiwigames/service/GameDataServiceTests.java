@@ -1,5 +1,7 @@
-package com.galvanize.ajkiwigames;
+package com.galvanize.ajkiwigames.service;
 
+import com.galvanize.ajkiwigames.model.GameData;
+import com.galvanize.ajkiwigames.service.GameDataService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +14,7 @@ public class GameDataServiceTests {
     GameDataService gameDataService;
 
     List<GameData> gamesData;
+
     @BeforeEach
     void setUp() {
         gameDataService = new GameDataService();
@@ -35,12 +38,14 @@ public class GameDataServiceTests {
     @Test
     void whenAddGame_shouldReturnGame() {
         GameData newGame = new GameData(11, "Call of Duty");
+
         assertEquals(newGame, gameDataService.addGame(newGame), "Should return game when adding");
     }
 
     @Test
     void whenUpdateGame_returnUpdatedGame() {
         gameDataService.updateGameById(3, "publisher", "Atari");
+
         assertEquals("Atari", gameDataService.getGameById(3).getPublisher(),
                 "Should update game publisher name to Atari");
     }
@@ -48,6 +53,7 @@ public class GameDataServiceTests {
     @Test
     void whenDelete_deleteGame() {
         gameDataService.deleteGameById(6);
+
         assertEquals(null, gameDataService.getGameById(6), "Should return null");
     }
 }

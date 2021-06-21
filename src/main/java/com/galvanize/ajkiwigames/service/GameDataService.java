@@ -1,5 +1,6 @@
-package com.galvanize.ajkiwigames;
+package com.galvanize.ajkiwigames.service;
 
+import com.galvanize.ajkiwigames.model.GameData;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
